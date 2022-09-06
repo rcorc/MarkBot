@@ -3,6 +3,7 @@ const { isWholeWordsInText } = require('../util/functions')
 
 // event handler for messageCreate event
 // messageCreate happens whenever a message is sent in the guild
+
 const markTriggers = ['mark', 'markiplier', 'markerplier']
 const markReverseTriggers = ['kram']
 const markWobbleTriggers = ['mrak']
@@ -10,7 +11,7 @@ const markWobbleTriggers = ['mrak']
 module.exports = {
     name: 'messageCreate', //must match file name
     run: async function runAll(bot, message) {
-        console.log(`msg author: ${message.author.tag}, msg content: '${message.content}'`)
+        console.log(`${message.author.tag}, msg content: '${message.content}'`)
         const {client, prefix, owners} = bot
 
         // ignore the following message types:
@@ -31,13 +32,15 @@ module.exports = {
             if (markFound) {
                 // get the command and run it
                 try {
-                       await client.commands.get('mark').run({message})
+                    console.log('running command mark')
+                    await client.commands.get('mark').run({message})
                 } catch (error) {
                     console.error(error)
                 }
             }
             if (markReverseFound) {
                 try {
+                    console.log('running command markReverse')
                     await client.commands.get('markReverse').run({message})
                 } catch (error) {
                     console.error(error)
@@ -45,6 +48,7 @@ module.exports = {
             }
             if (markWobbleFound) {
                 try {
+                    console.log('running command markWobble')
                     await client.commands.get('markWobble').run({message})
                 } catch (error) {
                     console.error(error)
@@ -54,7 +58,7 @@ module.exports = {
         }
 
         // if message doesn't start with the prefix
-        if (!message.content.startsWith(prefix)) return
+        if (!message.content.toLowerCase().startsWith(prefix)) return
 
 
         // get command and args
@@ -77,7 +81,7 @@ module.exports = {
 
         // call the command
         try {
-            console.log('running command', message.content)
+            console.log(`running command '${message.content}'`)
             await command.run({...bot, message, args})
         } catch (error) {
             let errMsg = error.toString()

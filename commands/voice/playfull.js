@@ -6,9 +6,6 @@ const { QueryType } = require("discord-player")
 module.exports = {
     name: 'playfull',
     run: async ({ client, message }) => {
-
-        // message.reply('play command detected')
-
         let authorAsGuildMember = message.guild.members.cache.get(message.author.id)
 
         // check if author is in a voice channel
@@ -34,6 +31,7 @@ module.exports = {
         // message.channel.send(`**[${song.title}](${song.url})** has been added to the Queue`)
         // message.channel.send(`Duration: ${song.duration}`)
         console.log('playing', `**[${song.title}](${song.url})** has been added to the Queue`)
+        message.reply('Playing full clip, type \'markbot stop\' to stop')
 
         if (!queue.playing) await queue.play()
     }

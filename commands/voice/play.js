@@ -6,9 +6,6 @@ const { QueryType } = require("discord-player")
 module.exports = {
     name: 'play',
     run: async ({ client, message }) => {
-
-        // message.reply('play command detected')
-
         let authorAsGuildMember = message.guild.members.cache.get(message.author.id)
 
         // check if author is in a voice channel
