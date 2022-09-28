@@ -4,7 +4,7 @@ const { isWholeWordsInText } = require('../util/functions')
 // event handler for messageCreate event
 // messageCreate happens whenever a message is sent in the guild
 
-const markTriggers = ['mark', 'markiplier', 'markerplier, marked, marking, marks']
+const markTriggers = ['mark', 'markiplier', 'markerplier', 'marked', 'marking', 'marks']
 const markReverseTriggers = ['kram']
 const markWobbleTriggers = ['mrak']
 
