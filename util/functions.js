@@ -24,7 +24,7 @@ const tryFunctionUnlessCooldown = (message, sendMessage) => {
             timeout.add(message.author.id);
             setTimeout(() => {
                 timeout.delete(message.author.id);
-            }, 60000);
+            }, 10 * 1000);
         }
         return true
     }
